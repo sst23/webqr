@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="">
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')
+	</script>
+	<input id='url' type='text' required='required' />
+	<button id='submit' type='button'>Submit</button>
+	<p></p>
+	<hr/>
+	<pre id="result"></pre>
+	<script>
+		$('#submit').click(function() {
+			var url = $('input#url').val();
+			$.ajax({
+				url : "/api/qrcode/",
+				type : "POST",
+				data : JSON.stringify({"url" : url}),
+				contentType : "application/json",
+				processData : false,
+				dataType : "json"
+			}).done(function(data) {
+				console.log(data);
+				$('pre#result').text(data.result);
+			}).fail(function(data) {
+				window.alert('An error occured: ' + data.responseText);
+			});
+		});
+	</script>
+</body>
+</html>

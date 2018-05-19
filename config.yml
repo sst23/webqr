@@ -1,0 +1,6 @@
+logging:
+  level: INFO
+  loggers:
+    org.perlhacker: DEBUG
+server:
+  rootPath: /api/
