@@ -1,14 +1,13 @@
 package org.perlhacker.webqr.api;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DecodeResult {
-	private String result;
+	private final String result;
 
-	public DecodeResult() {
-	}
-
-	public DecodeResult(String result) {
+	@JsonCreator
+	public DecodeResult(@JsonProperty("result") String result) {
 		this.result = result;
 	}
 
